@@ -15,20 +15,30 @@ using System.Windows.Shapes;
 namespace e_tagebuch
 {
     /// <summary>
-    /// Interaction logic for frmHauptSeite.xaml
+    /// Interaction logic for frmEditor.xaml
     /// </summary>
-    public partial class frmHauptSeite : Window
+    public partial class frmEditor : Window
     {
-        public frmHauptSeite()
+        public frmEditor()
         {
             InitializeComponent();
         }
 
+        private void BntClose_Click(object sender, RoutedEventArgs e)
+        {
+            frmHauptSeite HauptSeite = new frmHauptSeite();
+            this.Close();
+            HauptSeite.Show();
+        }
+
+        private void BntSave_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            e_tagebuch.frmEditor EditWindow = new frmEditor();
-            this.Close();
-            EditWindow.Show();
+
         }
     }
 }

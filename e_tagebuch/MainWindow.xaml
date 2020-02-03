@@ -5,14 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:e_tagebuch"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button Content="Button" x:Name="bntLogin" HorizontalAlignment="Left" Margin="68,314,0,0" VerticalAlignment="Top" Width="75" Click="bntLogin_Click"/>
-        <Label Content="Label" x:Name="lblTitle" HorizontalAlignment="Left" Margin="85,33,0,0" VerticalAlignment="Top"/>
-        <Label Content="Benutzername" x:Name="lblUsername" HorizontalAlignment="Left" Margin="85,130,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="23" Margin="85,161,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Passwort" x:Name="lblPQ" HorizontalAlignment="Left" Margin="85,190,0,0" VerticalAlignment="Top"/>
-        <PasswordBox x:Name="PWBox" HorizontalAlignment="Left" Margin="85,231,0,0" VerticalAlignment="Top" Width="120"/>
+        Title="Login" Height="177" Width="275">
+    <Grid Margin="0,0,2,-2">
+        <Button Content="Anmelden" x:Name="bntLogin" HorizontalAlignment="Left" Margin="159,112,0,0" VerticalAlignment="Top" Width="75" Click="bntLogin_Click"/>
+        <Label Content="Benutzername" x:Name="lblUsername" HorizontalAlignment="Left" Margin="23,19,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="23" Margin="114,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Passwort" x:Name="lblPW" HorizontalAlignment="Left" Margin="23,62,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.509,-0.538"/>
+        <PasswordBox x:Name="PWBox" HorizontalAlignment="Left" Margin="114,72,0,0" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>
