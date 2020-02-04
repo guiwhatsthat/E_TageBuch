@@ -7,10 +7,14 @@
         mc:Ignorable="d"
         Title="frmHauptSeite" Height="460.5" Width="470">
     <Grid>
-        <CheckBox x:Name="chkDate" Content="Suche nach Datum" HorizontalAlignment="Left" Margin="34,42,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="chkType" Content="Suche nach Dömäne" HorizontalAlignment="Left" Margin="34,86,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="chkDate" Content="Suche nach Datum" HorizontalAlignment="Left" Margin="34,42,0,0" VerticalAlignment="Top" Checked="ChkDate_Checked"/>
+        <CheckBox x:Name="chkType" Content="Suche nach Dömäne" HorizontalAlignment="Left" Margin="34,86,0,0" VerticalAlignment="Top" Checked="ChkType_Checked"/>
         <DatePicker x:Name="dpSearchDate" HorizontalAlignment="Left" Margin="180,38,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="cmbTyspe" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="180,79,0,0"/>
+        <ComboBox x:Name="cmbType" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="180,79,0,0">
+            <ComboBoxItem>Freizeit</ComboBoxItem>
+            <ComboBoxItem>Schule</ComboBoxItem>
+            <ComboBoxItem>Arbeit</ComboBoxItem>
+        </ComboBox>
         <Label Content="Suchkriterien" HorizontalAlignment="Left" Margin="34,10,0,0" VerticalAlignment="Top"/>
         <ListView x:Name="lvwView" HorizontalAlignment="Left" Height="268" Margin="34,141,0,0" VerticalAlignment="Top" Width="266">
             <ListView.View>
@@ -25,13 +29,13 @@
         </ListView>
         <Label Content="Gefundene Einträge" HorizontalAlignment="Left" Margin="34,115,0,0" VerticalAlignment="Top"/>
         <Label Content="Textsuche" HorizontalAlignment="Left" Margin="309,142,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtSuche" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Margin="309,170,0,0"/>
-        <Button x:Name="bntShow" Content="Anzeigen" HorizontalAlignment="Left" Margin="309,204,0,0" VerticalAlignment="Top" Width="119" Height="22"/>
-        <DatePicker HorizontalAlignment="Left" Margin="309,277,0,0" VerticalAlignment="Top" Width="120"/>
-        <CheckBox x:Name="chkdateSince" Content="Zeige alle Daten&#xD;&#xA; ohne Einträge seit:" HorizontalAlignment="Left" Margin="309,241,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtSuche" Text="" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="309,170,0,0" TextChanged="TxtSuche_TextChanged"/>
+        <Button x:Name="bntShow" Content="Anzeigen" HorizontalAlignment="Left" Margin="309,204,0,0" VerticalAlignment="Top" Width="119" Height="22" Click="BntShow_Click"/>
+        <DatePicker x:Name="dpRangeDate" HorizontalAlignment="Left" Margin="309,277,0,0" VerticalAlignment="Top" Width="120"/>
+        <CheckBox x:Name="chkdateSince" Content="Zeige alle Daten&#xD;&#xA; ohne Einträge seit:" HorizontalAlignment="Left" Margin="309,241,0,0" VerticalAlignment="Top" Checked="ChkdateSince_Checked"/>
         <Button x:Name="bntNew" Content="Neuer Eintrag" HorizontalAlignment="Left" Margin="310,387,0,0" VerticalAlignment="Top" Width="119" Height="22" Click="BntNew_Click" />
         <Button x:Name="bntEdit" Content="Eintrag bearbeiten" HorizontalAlignment="Left" Margin="309,346,0,0" VerticalAlignment="Top" Width="119" Height="22" Click="BntEdit_Click"/>
         <Label Content="Aktuelles Tagebuch:" HorizontalAlignment="Left" Margin="318,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.432,0.333"/>
-        <ComboBox x:Name="cmbCurrent" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="318,79,0,0"/>
+        <TextBox x:Name="txtTagebuch" IsEnabled="False" Text="" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="318,78,0,0" TextChanged="TxtSuche_TextChanged"/>
     </Grid>
 </Window>

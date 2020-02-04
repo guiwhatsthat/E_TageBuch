@@ -26,6 +26,8 @@ namespace e_tagebuch
         {
             Startfenster = t_Hauptfenster;
             InitializeComponent();
+            //Es ist im Tool noch nicht möglich das Tagebuch zu ändern. Auch wenn dies die Klassen ermöglichen würden
+            txtTagebuch.Text = Startfenster.CurrentTagebuch.Titel;
         }
 
 
@@ -36,7 +38,7 @@ namespace e_tagebuch
 
         public void BntNew_Click(object sender, RoutedEventArgs e)
         {
-            NeuerEintrag = this.Startfenster.CurrentTagebuch.erstelle_Eintrag("Test", "test");
+            NeuerEintrag = this.Startfenster.CurrentTagebuch.erstelle_Eintrag("Test", "Nicht definiert");
             frmEditor Editor = new frmEditor(this);
             Editor.Show();
         }
@@ -52,6 +54,73 @@ namespace e_tagebuch
                 lvwView.Items.Add(row);
 
             }
+        }
+
+        private void BntShow_Click(object sender, RoutedEventArgs e)
+        {
+            List<MainWindow.Eintrag> Gefundeneintraege = new List<MainWindow.Eintrag>();
+            if (!string.IsNullOrEmpty(txtSuche.Text))
+            {
+                Gefundeneintraege = this.Startfenster.CurrentTagebuch.suche_Eintrag("Text", txtSuche.Text);
+            }
+            else if (chkDate.IsChecked == true)
+            {
+                Gefundeneintraege = this.Startfenster.CurrentTagebuch.suche_Eintrag("Datum", dpSearchDate.Text);
+            }
+            else if (chkdateSince.IsChecked == true)
+            {
+                Gefundeneintraege = this.Startfenster.CurrentTagebuch.suche_Eintrag("Datum", dpRangeDate.Text);
+            }
+            else if (chkType.IsChecked == true)
+            {
+                Gefundeneintraege = this.Startfenster.CurrentTagebuch.suche_Eintrag("Domaene", cmbType.SelectedValue.ToString().Replace("System.Windows.Controls.ComboBoxItem: ", ""));
+            }
+
+            lvwView.Items.Clear();
+            foreach (var EintragToAdd in Gefundeneintraege)
+            {
+                //Add Einträge zu Listview
+                var row = new { Name = EintragToAdd.Name, Datum = EintragToAdd.Datum, Domaene = EintragToAdd.Domaene, Text = EintragToAdd.Text, Bildpfad = EintragToAdd.Bildpfad };
+                lvwView.Items.Add(row);
+
+            }
+        }
+
+        private void ChkDate_Checked(object sender, RoutedEventArgs e)
+        {
+            if (chkDate.IsChecked == true)
+            {
+                chkdateSince.IsChecked = false;
+                chkType.IsChecked = false;
+                txtSuche.Text = "";
+            }
+        }
+
+        private void ChkType_Checked(object sender, RoutedEventArgs e)
+        {
+            if (chkType.IsChecked == true)
+            {
+                chkDate.IsChecked = false;
+                chkdateSince.IsChecked = false;
+                txtSuche.Text = "";
+            }
+        }
+
+        private void ChkdateSince_Checked(object sender, RoutedEventArgs e)
+        {
+            if (chkdateSince.IsChecked == true)
+            {
+                chkDate.IsChecked = false;
+                chkType.IsChecked = false;
+                txtSuche.Text = "";
+            }
+        }
+
+        private void TxtSuche_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            chkDate.IsChecked = false;
+            chkType.IsChecked = false;
+            chkdateSince.IsChecked = false;
         }
     }
 }

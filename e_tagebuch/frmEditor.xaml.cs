@@ -25,10 +25,7 @@ namespace e_tagebuch
             HauptSeite = t_HauptSeite;
             InitializeComponent();
             HauptSeite.Hide();
-            this.txtName.Text = HauptSeite.NeuerEintrag.Name;
-            this.txtType.Text = HauptSeite.NeuerEintrag.Domaene;
-
-            
+            this.txtName.Text = HauptSeite.NeuerEintrag.Name;            
         }
 
         private void BntClose_Click(object sender, RoutedEventArgs e)
@@ -41,7 +38,8 @@ namespace e_tagebuch
         {
             //Add current settings to current eintrag
             this.HauptSeite.NeuerEintrag.Name = txtName.Text;
-            this.HauptSeite.NeuerEintrag.Domaene = txtType.Text;
+            //Ist gebastelt aber finde aktuell keine bessere Lösung
+            this.HauptSeite.NeuerEintrag.Domaene = cmbType.SelectedValue.ToString().Replace("System.Windows.Controls.ComboBoxItem: ","");
             this.HauptSeite.NeuerEintrag.Bildpfad = lblPicPath.Content.ToString();
             this.HauptSeite.NeuerEintrag.Text = txtMain.Text;
             //Update Listview

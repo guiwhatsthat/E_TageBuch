@@ -74,19 +74,43 @@ namespace e_tagebuch
 				return Initial_Eintrag;
 			}
 
-			public void suche_Eintrag(string t_Suchkriterium, string t_SuchWert) 
+			public List<Eintrag> suche_Eintrag(string t_Suchkriterium, string t_SuchWert) 
 			{
-				//Suchen muss noch gemacht werden. Sollte am Schluss einen Eintrag oder mehrere zurückgeben
-                if (t_Suchkriterium == "Test")
+                //Suchen muss noch gemacht werden. Sollte am Schluss einen Eintrag oder mehrere zurückgeben
+                List<Eintrag> GefundeneEintraege = new List<Eintrag>();
+                if (t_Suchkriterium == "Text")
                 {
+                    GefundeneEintraege = new List<Eintrag>(Eintraege.FindAll(Item => Item.Name.Contains(t_SuchWert)));
 
                 }
                 else if (t_Suchkriterium == "Datum")
                 {
-
+                    DateTime SucheDatum = DateTime.Parse(t_SuchWert);
+                    GefundeneEintraege = new List<Eintrag>(Eintraege.FindAll(Item => Item.Datum.Date == SucheDatum.Date));
                 }
+                else if (t_Suchkriterium == "Domaene")
+                {
+                    GefundeneEintraege = new List<Eintrag>(Eintraege.FindAll(Item => Item.Domaene.Contains(t_SuchWert)));
+                }
+                else if (t_Suchkriterium == "Leer")
+                {
+                    DateTime SucheDatum = DateTime.Parse(t_SuchWert);
 
-			}
+                    //Date range (Aus dem Internet: https://stackoverflow.com/questions/1847580/how-do-i-loop-through-a-date-range)
+                    IEnumerable<DateTime> EachDay(DateTime from, DateTime thru)
+                    {
+                        for (var day = from.Date; day.Date <= thru.Date; day = day.AddDays(1))
+                            yield return day;
+                    }
+                    foreach (DateTime Tag in EachDay(SucheDatum, DateTime.Now)) {
+                        if ((Eintraege.FindAll(Item => Item.Datum.Date == SucheDatum.Date).Count == 0)) {
+                            GefundeneEintraege.Add(new Eintrag("Leerer Tag", "Keine", Tag));
+                        }
+                    }
+                }
+                //Gefundene Einträge zurückgeben
+                return GefundeneEintraege;
+            }
 
 		}
 
@@ -102,7 +126,13 @@ namespace e_tagebuch
 				Domaene = t_Domaene;
 				Datum = DateTime.Now;
 			}
-		}
+            public Eintrag(string t_Name, string t_Domaene, DateTime t_Date)
+            {
+                Name = t_Name;
+                Domaene = t_Domaene;
+                Datum = t_Date;
+            }
+        }
 
 		private void bntLogin_Click(object sender, RoutedEventArgs e)
 		{
