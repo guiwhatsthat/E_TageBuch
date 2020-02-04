@@ -19,21 +19,33 @@ namespace e_tagebuch
     /// </summary>
     public partial class frmEditor : Window
     {
-        public frmEditor()
+        frmHauptSeite HauptSeite;
+        public frmEditor(frmHauptSeite t_HauptSeite)
         {
+            HauptSeite = t_HauptSeite;
             InitializeComponent();
+            HauptSeite.Hide();
+            this.txtName.Text = HauptSeite.NeuerEintrag.Name;
+            this.txtType.Text = HauptSeite.NeuerEintrag.Domaene;
+
+            
         }
 
         private void BntClose_Click(object sender, RoutedEventArgs e)
         {
-            frmHauptSeite HauptSeite = new frmHauptSeite();
-            this.Close();
-            HauptSeite.Show();
+            Close();
+            this.HauptSeite.Show();
         }
 
         private void BntSave_Click(object sender, RoutedEventArgs e)
         {
-
+            //Add current settings to current eintrag
+            this.HauptSeite.NeuerEintrag.Name = txtName.Text;
+            this.HauptSeite.NeuerEintrag.Domaene = txtType.Text;
+            this.HauptSeite.NeuerEintrag.Bildpfad = lblPicPath.Content.ToString();
+            this.HauptSeite.NeuerEintrag.Text = txtMain.Text;
+            //Update Listview
+            this.HauptSeite.Update_Listview();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

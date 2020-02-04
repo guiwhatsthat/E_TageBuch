@@ -19,16 +19,39 @@ namespace e_tagebuch
     /// </summary>
     public partial class frmHauptSeite : Window
     {
-        public frmHauptSeite()
+        MainWindow Startfenster;
+        public MainWindow.Eintrag NeuerEintrag;
+
+        public frmHauptSeite(MainWindow t_Hauptfenster)
         {
+            Startfenster = t_Hauptfenster;
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        private void BntEdit_Click(object sender, RoutedEventArgs e)
         {
-            e_tagebuch.frmEditor EditWindow = new frmEditor();
-            this.Close();
-            EditWindow.Show();
+
+        }
+
+        public void BntNew_Click(object sender, RoutedEventArgs e)
+        {
+            NeuerEintrag = this.Startfenster.CurrentTagebuch.erstelle_Eintrag("Test", "test");
+            frmEditor Editor = new frmEditor(this);
+            Editor.Show();
+        }
+
+        public void Update_Listview()
+        {
+            //Entferene alle aktuelle Inhalte der Listview, welche die Einträge anzeigt
+            lvwView.Items.Clear();
+            foreach (var EintragToAdd in this.Startfenster.CurrentTagebuch.Eintraege)
+            {
+                //Add Einträge zu Listview
+                var row = new { Name = EintragToAdd.Name, Datum = EintragToAdd.Datum, Domaene = EintragToAdd.Domaene, Text = EintragToAdd.Text, Bildpfad = EintragToAdd.Bildpfad };
+                lvwView.Items.Add(row);
+
+            }
         }
     }
 }

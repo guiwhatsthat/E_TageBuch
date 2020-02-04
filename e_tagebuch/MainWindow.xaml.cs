@@ -20,6 +20,7 @@ namespace e_tagebuch
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+        public Tagebuch CurrentTagebuch;
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -56,13 +57,14 @@ namespace e_tagebuch
 			}
 		}
 
-		class Tagebuch {
+		public class Tagebuch {
 			public string Titel;
-			List<Eintrag> Eintraege;
+			public List<Eintrag> Eintraege;
 
 			public Tagebuch(string t_Titel)
 			{
 				Titel = t_Titel;
+                Eintraege = new List<Eintrag>();
 			}
 
 			public Eintrag erstelle_Eintrag(string t_Name, string t_Domaene) 
@@ -72,16 +74,25 @@ namespace e_tagebuch
 				return Initial_Eintrag;
 			}
 
-			public void suche_Eintrag(string t_Suchkriterium) 
+			public void suche_Eintrag(string t_Suchkriterium, string t_SuchWert) 
 			{
 				//Suchen muss noch gemacht werden. Sollte am Schluss einen Eintrag oder mehrere zurückgeben
+                if (t_Suchkriterium == "Test")
+                {
+
+                }
+                else if (t_Suchkriterium == "Datum")
+                {
+
+                }
+
 			}
 
 		}
 
-		class Eintrag {
+		public class Eintrag {
 			public string Name;
-			DateTime Datum;
+			public DateTime Datum;
 			public string Domaene;
 			public string Text;
 			public string Bildpfad;
@@ -101,9 +112,10 @@ namespace e_tagebuch
 				//Lade tagebücher von der Disk
 				//Wenn keine gefunden werden, dann eines erstellen
 
-				Tagebuch Erstes_Tagebuch = new Tagebuch("Erstes Tagebuch");
-				frmHauptSeite HauptSeite = new frmHauptSeite();
+				CurrentTagebuch = new Tagebuch("Erstes Tagebuch");
+				frmHauptSeite HauptSeite = new frmHauptSeite(this);
 				HauptSeite.Show();
+                this.Hide();
 			}
 
 

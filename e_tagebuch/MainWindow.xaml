@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:e_tagebuch"
         mc:Ignorable="d"
         Title="Login" Height="177" Width="275">
-    <Grid Margin="0,0,2,-2">
+    <Grid Margin="4,-1,-2,-1">
         <Button Content="Anmelden" x:Name="bntLogin" HorizontalAlignment="Left" Margin="159,112,0,0" VerticalAlignment="Top" Width="75" Click="bntLogin_Click"/>
         <Label Content="Benutzername" x:Name="lblUsername" HorizontalAlignment="Left" Margin="23,19,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="23" Margin="114,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
