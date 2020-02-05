@@ -33,9 +33,10 @@
         <Button x:Name="bntShow" Content="Anzeigen" HorizontalAlignment="Left" Margin="309,204,0,0" VerticalAlignment="Top" Width="119" Height="22" Click="BntShow_Click"/>
         <DatePicker x:Name="dpRangeDate" HorizontalAlignment="Left" Margin="309,277,0,0" VerticalAlignment="Top" Width="120"/>
         <CheckBox x:Name="chkdateSince" Content="Zeige alle Daten&#xD;&#xA; ohne Einträge seit:" HorizontalAlignment="Left" Margin="309,241,0,0" VerticalAlignment="Top" Checked="ChkdateSince_Checked"/>
-        <Button x:Name="bntNew" Content="Neuer Eintrag" HorizontalAlignment="Left" Margin="310,387,0,0" VerticalAlignment="Top" Width="119" Height="22" Click="BntNew_Click" />
-        <Button x:Name="bntEdit" Content="Eintrag bearbeiten" HorizontalAlignment="Left" Margin="309,346,0,0" VerticalAlignment="Top" Width="119" Height="22" Click="BntEdit_Click"/>
+        <Button x:Name="bntNew" Content="Neuer Eintrag" HorizontalAlignment="Left" Margin="310,353,0,0" VerticalAlignment="Top" Width="119" Height="22" Click="BntNew_Click" />
+        <Button x:Name="bntEdit" Content="Eintrag bearbeiten" HorizontalAlignment="Left" Margin="309,316,0,0" VerticalAlignment="Top" Width="119" Height="22" Click="BntEdit_Click"/>
         <Label Content="Aktuelles Tagebuch:" HorizontalAlignment="Left" Margin="318,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.432,0.333"/>
         <TextBox x:Name="txtTagebuch" IsEnabled="False" Text="" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="318,78,0,0" TextChanged="TxtSuche_TextChanged"/>
+        <Button x:Name="bntClose" Content="Schliessen" HorizontalAlignment="Left" Margin="310,388,0,0" VerticalAlignment="Top" Width="119" Height="22" Click="BntClose_Click"/>
     </Grid>
 </Window>

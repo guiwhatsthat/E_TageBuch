@@ -103,7 +103,7 @@ namespace e_tagebuch
                             yield return day;
                     }
                     foreach (DateTime Tag in EachDay(SucheDatum, DateTime.Now)) {
-                        if ((Eintraege.FindAll(Item => Item.Datum.Date == SucheDatum.Date).Count == 0)) {
+                        if ((Eintraege.FindAll(Item => Item.Datum.Date == Tag.Date).Count == 0)) {
                             GefundeneEintraege.Add(new Eintrag("Leerer Tag", "Keine", Tag));
                         }
                     }

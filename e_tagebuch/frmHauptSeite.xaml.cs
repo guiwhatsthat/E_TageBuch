@@ -33,7 +33,7 @@ namespace e_tagebuch
 
         private void BntEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            //Kommt  eventuell noch ;)
         }
 
         public void BntNew_Click(object sender, RoutedEventArgs e)
@@ -57,32 +57,40 @@ namespace e_tagebuch
         }
 
         private void BntShow_Click(object sender, RoutedEventArgs e)
-        {
-            List<MainWindow.Eintrag> Gefundeneintraege = new List<MainWindow.Eintrag>();
-            if (!string.IsNullOrEmpty(txtSuche.Text))
+        {   try
             {
-                Gefundeneintraege = this.Startfenster.CurrentTagebuch.suche_Eintrag("Text", txtSuche.Text);
-            }
-            else if (chkDate.IsChecked == true)
-            {
-                Gefundeneintraege = this.Startfenster.CurrentTagebuch.suche_Eintrag("Datum", dpSearchDate.Text);
-            }
-            else if (chkdateSince.IsChecked == true)
-            {
-                Gefundeneintraege = this.Startfenster.CurrentTagebuch.suche_Eintrag("Datum", dpRangeDate.Text);
-            }
-            else if (chkType.IsChecked == true)
-            {
-                Gefundeneintraege = this.Startfenster.CurrentTagebuch.suche_Eintrag("Domaene", cmbType.SelectedValue.ToString().Replace("System.Windows.Controls.ComboBoxItem: ", ""));
-            }
+                List<MainWindow.Eintrag> Gefundeneintraege = new List<MainWindow.Eintrag>();
+                if (!string.IsNullOrEmpty(txtSuche.Text))
+                {
+                    Gefundeneintraege = this.Startfenster.CurrentTagebuch.suche_Eintrag("Text", txtSuche.Text);
+                }
+                else if (chkDate.IsChecked == true)
+                {
+                    Gefundeneintraege = this.Startfenster.CurrentTagebuch.suche_Eintrag("Datum", dpSearchDate.Text);
+                }
+                else if (chkdateSince.IsChecked == true)
+                {
+                    Gefundeneintraege = this.Startfenster.CurrentTagebuch.suche_Eintrag("Leer", dpRangeDate.Text);
+                }
+                else if (chkType.IsChecked == true)
+                {
+                    Gefundeneintraege = this.Startfenster.CurrentTagebuch.suche_Eintrag("Domaene", cmbType.SelectedValue.ToString().Replace("System.Windows.Controls.ComboBoxItem: ", ""));
+                }
+                else {
+                    Gefundeneintraege = this.Startfenster.CurrentTagebuch.Eintraege;
+                }
 
-            lvwView.Items.Clear();
-            foreach (var EintragToAdd in Gefundeneintraege)
-            {
-                //Add Einträge zu Listview
-                var row = new { Name = EintragToAdd.Name, Datum = EintragToAdd.Datum, Domaene = EintragToAdd.Domaene, Text = EintragToAdd.Text, Bildpfad = EintragToAdd.Bildpfad };
-                lvwView.Items.Add(row);
+                lvwView.Items.Clear();
+                foreach (var EintragToAdd in Gefundeneintraege)
+                {
+                    //Add Einträge zu Listview
+                    var row = new { Name = EintragToAdd.Name, Datum = EintragToAdd.Datum, Domaene = EintragToAdd.Domaene, Text = EintragToAdd.Text, Bildpfad = EintragToAdd.Bildpfad };
+                    lvwView.Items.Add(row);
 
+                }
+            }
+            catch {
+                MessageBox.Show("Etwas lief schief bei der Suche.\n Überprüfe deine Angaben", "e_Tagenbuch", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -121,6 +129,11 @@ namespace e_tagebuch
             chkDate.IsChecked = false;
             chkType.IsChecked = false;
             chkdateSince.IsChecked = false;
+        }
+
+        private void BntClose_Click(object sender, RoutedEventArgs e)
+        {
+            System.Environment.Exit(0);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,19 +37,34 @@ namespace e_tagebuch
 
         private void BntSave_Click(object sender, RoutedEventArgs e)
         {
-            //Add current settings to current eintrag
-            this.HauptSeite.NeuerEintrag.Name = txtName.Text;
-            //Ist gebastelt aber finde aktuell keine bessere Lösung
-            this.HauptSeite.NeuerEintrag.Domaene = cmbType.SelectedValue.ToString().Replace("System.Windows.Controls.ComboBoxItem: ","");
-            this.HauptSeite.NeuerEintrag.Bildpfad = lblPicPath.Content.ToString();
-            this.HauptSeite.NeuerEintrag.Text = txtMain.Text;
-            //Update Listview
-            this.HauptSeite.Update_Listview();
+            try
+            {
+                //Add current settings to current eintrag
+                this.HauptSeite.NeuerEintrag.Name = txtName.Text;
+                //Ist gebastelt aber finde aktuell keine bessere Lösung
+                if (cmbType.SelectedItem != null)
+                {
+                    this.HauptSeite.NeuerEintrag.Domaene = cmbType.SelectedValue.ToString().Replace("System.Windows.Controls.ComboBoxItem: ", "");
+                }
+                this.HauptSeite.NeuerEintrag.Bildpfad = lblPicPath.Content.ToString();
+                this.HauptSeite.NeuerEintrag.Text = txtMain.Text;
+                //Update Listview
+                this.HauptSeite.Update_Listview();
+            }
+            catch
+            {
+                MessageBox.Show("Etwas lief schief bei speicher.\n Überprüfe deine Angaben", "e_Tagenbuch", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BntChoosePic_Click(object sender, RoutedEventArgs e)
         {
-
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                lblPicPath.Content = openFileDialog.FileName;
+            }
         }
     }
 }
