@@ -1,0 +1,26 @@
+﻿<Window x:Class="e_tagebuch.frmDomaene"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:e_tagebuch"
+        mc:Ignorable="d"
+        Title="frmDomaene" Height="205" Width="129">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox x:Name="grbType" Header="Alle Domänen" HorizontalAlignment="Left" Height="125" Margin="10,10,0,0" VerticalAlignment="Top" Width="100">
+            <Grid x:Name="GridCheckBox" HorizontalAlignment="Left" Height="102" Margin="-4,-1,0,0" VerticalAlignment="Top" Width="113">
+                <CheckBox x:Name="chbArbeit" Content="Arbeit" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked"/>
+                <CheckBox x:Name="chbFamilie" Content="Familie" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked"/>
+                <CheckBox x:Name="chbFerien" Content="Ferien" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked"/>
+                <CheckBox x:Name="chbGeburtstag" Content="Geburtstag" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked"/>
+                <CheckBox x:Name="chbSchule" Content="Schule" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked"/>
+            </Grid>
+        </GroupBox>
+        <Button x:Name="bntOk" Content="OK" HorizontalAlignment="Left" Margin="10,144,0,0" VerticalAlignment="Top" Width="100" Click="BntOk_Click"/>
+
+    </Grid>
+</Window>

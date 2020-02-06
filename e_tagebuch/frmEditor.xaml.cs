@@ -20,7 +20,7 @@ namespace e_tagebuch
     /// </summary>
     public partial class frmEditor : Window
     {
-        frmHauptSeite HauptSeite;
+        public frmHauptSeite HauptSeite;
         public frmEditor(frmHauptSeite t_HauptSeite)
         {
             HauptSeite = t_HauptSeite;
@@ -41,11 +41,6 @@ namespace e_tagebuch
             {
                 //Add current settings to current eintrag
                 this.HauptSeite.NeuerEintrag.Name = txtName.Text;
-                //Ist gebastelt aber finde aktuell keine bessere Lösung
-                if (cmbType.SelectedItem != null)
-                {
-                    this.HauptSeite.NeuerEintrag.Domaene = cmbType.SelectedValue.ToString().Replace("System.Windows.Controls.ComboBoxItem: ", "");
-                }
                 this.HauptSeite.NeuerEintrag.Bildpfad = lblPicPath.Content.ToString();
                 this.HauptSeite.NeuerEintrag.Text = txtMain.Text;
                 //Update Listview
@@ -65,6 +60,12 @@ namespace e_tagebuch
             {
                 lblPicPath.Content = openFileDialog.FileName;
             }
+        }
+
+        private void BntChoose_Click(object sender, RoutedEventArgs e)
+        {
+            frmDomaene frmDomaeneWaehlen = new frmDomaene(this);
+            frmDomaeneWaehlen.Show();
         }
     }
 }
