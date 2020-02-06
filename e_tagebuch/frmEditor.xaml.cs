@@ -26,7 +26,9 @@ namespace e_tagebuch
             HauptSeite = t_HauptSeite;
             InitializeComponent();
             HauptSeite.Hide();
-            this.txtName.Text = HauptSeite.NeuerEintrag.Name;            
+            this.txtName.Text = HauptSeite.NeuerEintrag.Name;
+            this.dpDatepicker.DisplayDate = HauptSeite.NeuerEintrag.Datum;
+            this.lblPicPath.Content = HauptSeite.NeuerEintrag.Bildpfad;
         }
 
         private void BntClose_Click(object sender, RoutedEventArgs e)
@@ -41,14 +43,26 @@ namespace e_tagebuch
             {
                 //Add current settings to current eintrag
                 this.HauptSeite.NeuerEintrag.Name = txtName.Text;
-                this.HauptSeite.NeuerEintrag.Bildpfad = lblPicPath.Content.ToString();
+                if (lblPicPath.Content != null)
+                {
+                    this.HauptSeite.NeuerEintrag.Bildpfad = lblPicPath.Content.ToString();
+                }
                 this.HauptSeite.NeuerEintrag.Text = txtMain.Text;
-                //Update Listview
+                if (dpDatepicker.Text == null)
+                {
+                    this.HauptSeite.NeuerEintrag.Datum = DateTime.Now.Date;
+                }
+                else
+                {
+                    this.HauptSeite.NeuerEintrag.Datum = DateTime.Parse(dpDatepicker.Text).Date;
+                }
+                
+                //Update Listview -> Anzeige aller Eintr$ge
                 this.HauptSeite.Update_Listview();
             }
             catch
             {
-                MessageBox.Show("Etwas lief schief bei speicher.\n Überprüfe deine Angaben", "e_Tagenbuch", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Etwas lief schief bei speicher.\nÜberprüfe deine Angaben", "e_Tagenbuch", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

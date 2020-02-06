@@ -10,12 +10,14 @@
         <Label Content="Name:" HorizontalAlignment="Left" Margin="34,10,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Margin="102,14,0,0"/>
         <Label Content="Domäne:" HorizontalAlignment="Left" Margin="34,38,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="bntChoosePic" Content=":" HorizontalAlignment="Left" Margin="203,72,0,0" VerticalAlignment="Top" Width="19" Click="BntChoosePic_Click"/>
-        <Label Content="Bild: " HorizontalAlignment="Left" Margin="34,69,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblPicPath" Content="path" HorizontalAlignment="Left" Margin="102,69,0,0" VerticalAlignment="Top" IsEnabled="False" Width="96"/>
+        <Button x:Name="bntChoosePic" Content=":" HorizontalAlignment="Left" Margin="203,99,0,0" VerticalAlignment="Top" Width="19" Click="BntChoosePic_Click"/>
+        <Label Content="Bild: " HorizontalAlignment="Left" Margin="34,96,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblPicPath" Content="path" HorizontalAlignment="Left" Margin="102,96,0,0" VerticalAlignment="Top" IsEnabled="False" Width="96"/>
         <TextBox x:Name="txtMain"  HorizontalAlignment="Left" Height="225" MaxLength="1000" Margin="10,137,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="243"/>
         <Button x:Name="bntClose" Content="Schliessen" HorizontalAlignment="Left" Margin="98,376,0,0" VerticalAlignment="Top" Width="75" Click="BntClose_Click"/>
         <Button x:Name="bntSave" Content="Sichern" HorizontalAlignment="Left" Margin="178,376,0,0" VerticalAlignment="Top" Width="75" Click="BntSave_Click"/>
         <Button x:Name="bntChoose"  Content="auswählen" HorizontalAlignment="Left" Margin="102,42,0,0" VerticalAlignment="Top" Width="75" Click="BntChoose_Click" />
+        <Label x:Name="lblDatum"  Content="Datum:" HorizontalAlignment="Left" Margin="34,69,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="dpDatepicker" HorizontalAlignment="Left" Margin="102,69,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

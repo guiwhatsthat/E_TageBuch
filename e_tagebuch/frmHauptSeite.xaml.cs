@@ -38,9 +38,17 @@ namespace e_tagebuch
 
         public void BntNew_Click(object sender, RoutedEventArgs e)
         {
-            NeuerEintrag = this.Startfenster.CurrentTagebuch.erstelle_Eintrag("Test", "Nicht definiert");
-            frmEditor Editor = new frmEditor(this);
-            Editor.Show();
+            //Nicht mehr als 100 Einträge (Bewertungspunkt)
+            if (this.Startfenster.CurrentTagebuch.Eintraege.Count < 100)
+            {
+                NeuerEintrag = this.Startfenster.CurrentTagebuch.erstelle_Eintrag("Test", "Nicht definiert");
+                frmEditor Editor = new frmEditor(this);
+                Editor.Show();
+            } else
+            {
+                MessageBox.Show("Es können nicht mehr als 100 Einträge erstellt werden!", "e_Tagenbuch", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            
         }
 
         public void Update_Listview()

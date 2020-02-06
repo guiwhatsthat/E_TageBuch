@@ -124,7 +124,7 @@ namespace e_tagebuch
 			public Eintrag(string t_Name, string t_Domaene) {
 				Name = t_Name;
 				Domaene = t_Domaene;
-				Datum = DateTime.Now;
+				Datum = DateTime.Now.Date;
 			}
             public Eintrag(string t_Name, string t_Domaene, DateTime t_Date)
             {
